@@ -16,7 +16,7 @@ ARG SOURCE
 
 # NOTE(claudiub): The src image is already based on nanoserver, but it seems that docker buildx
 # has an issue pulling cross-registry images, and we avoid that by pulling it ourselves.
-FROM --platform="windows/amd64" mcr.microsoft.com/windows/nanoserver:1809 as nanoserver
+FROM --platform="windows/amd64" mcr.microsoft.com/windows/nanoserver:1809@sha256:14564f500b1e714e66652f7d0a101ea8917b4d79b8ac878e7f6546ff087a0fc8 as nanoserver
 FROM --platform="windows/amd64" $SOURCE as src
 FROM scratch
 
