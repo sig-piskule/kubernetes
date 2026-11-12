@@ -16,7 +16,7 @@ ARG BASEIMAGE
 ARG REGISTRY
 ARG OS_VERSION
 
-FROM claudiubelu/nginx:1.19.2 as nginx-source
+FROM claudiubelu/nginx:1.19.2@sha256:5a08445f0ade7e2e3140e4edc183178287c86657131f5c8e3ecb8579c2499267 as nginx-source
 FROM --platform=linux/amd64 $REGISTRY/windows-servercore-cache:1.0-linux-amd64-$OS_VERSION as servercore-helper
 FROM $BASEIMAGE
 

@@ -17,7 +17,7 @@ ARG REGISTRY
 ARG OS_VERSION
 
 # We're using a Linux image to unpack the archive, then we're copying it over to Windows.
-FROM --platform=linux/amd64 alpine:3.6 as prep
+FROM --platform=linux/amd64 alpine:3.6@sha256:66790a2b79e1ea3e1dabac43990c54aca5d1ddf268d9a5a0285e4167c8b24475 as prep
 
 ENV CURL_VERSION=7.57.0
 
@@ -57,7 +57,7 @@ RUN mkdir /curl-full /curl-dir && \
 
 # Windows Stage
 FROM --platform=linux/amd64 $REGISTRY/windows-servercore-cache:1.0-linux-amd64-$OS_VERSION as servercore-helper
-FROM --platform=linux/amd64 e2eteam/powershell-helper:6.2.7-linux-cache as ps-helper
+FROM --platform=linux/amd64 e2eteam/powershell-helper:6.2.7-linux-cache@sha256:d66835b65af2075965b54f42f56887e7049f0ca452faa3e3c3c73fb3fef43bdb as ps-helper
 FROM $BASEIMAGE
 
 COPY --from=prep /tmp-dir /tmp
